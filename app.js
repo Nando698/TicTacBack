@@ -128,7 +128,9 @@ io.on('connection', (socket) => {
             sessions[index].matrix[numberOfSquare-1] = 1
             if(checkWin(sessions[index].matrix,1)){
                 sessions[index].score.p1++
-                io.to(code).emit('p1win', sessions[index])
+                io.to(code).emit('update', sessions[index])
+
+                io.to(code).emit('p1win')
                 
                 setTimeout(() => {
                     sessions[index].restoreSession()
@@ -139,7 +141,9 @@ io.on('connection', (socket) => {
             sessions[index].matrix[numberOfSquare-1] = 2
             if(checkWin(sessions[index].matrix,2)){
                 sessions[index].score.p2++
-                io.to(code).emit('p2win', sessions[index])
+
+                io.to(code).emit('update', sessions[index])
+                io.to(code).emit('p2win')
                 
                 setTimeout(() => {
                     sessions[index].restoreSession()
