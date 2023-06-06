@@ -45,7 +45,7 @@ app.get('/', (req, res) => {
   })
 
 
-server.listen(process.env.PORT, function () {
+server.listen(0, function () {
     console.log(`Server listening port  ${this.address().port}`);
 });
 
